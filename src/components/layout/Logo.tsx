@@ -55,10 +55,10 @@ export const Logo = ({ className }: { className?: string }) => {
                             x2="24"
                             y2="24"
                             gradientUnits="userSpaceOnUse">
-                            <stop stopColor="#18181b" />
+                            <stop stopColor="#10b981" />
                             <stop
                                 offset="1"
-                                stopColor="#52525b"
+                                stopColor="#059669"
                             />
                         </linearGradient>
                         <linearGradient
@@ -68,10 +68,10 @@ export const Logo = ({ className }: { className?: string }) => {
                             x2="24"
                             y2="24"
                             gradientUnits="userSpaceOnUse">
-                            <stop stopColor="#3f3f46" />
+                            <stop stopColor="#34d399" />
                             <stop
                                 offset="1"
-                                stopColor="#a1a1aa"
+                                stopColor="#10b981"
                             />
                         </linearGradient>
                     </defs>

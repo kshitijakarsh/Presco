@@ -33,8 +33,11 @@ export const HeroContent = () => {
                 <AnimatedGroup variants={transitionVariants}>
                     <Link
                         href="#link"
-                        className="hover:bg-background dark:hover:border-t-border bg-muted group mx-auto flex w-fit items-center gap-4 rounded-full border p-1 pl-4 shadow-md shadow-black/5 transition-all duration-300 dark:border-t-white/5 dark:shadow-zinc-950">
-                        <span className="text-foreground text-sm">The Smartest Way to Save on Medicines</span>
+                        className="hover:bg-brand-light/50 dark:hover:border-brand/20 bg-muted group mx-auto flex w-fit items-center gap-4 rounded-full border p-1 pl-4 shadow-md shadow-black/5 transition-all duration-300 dark:border-t-white/5 dark:shadow-zinc-950">
+                        <span className="text-foreground text-sm flex items-center gap-2">
+                            <span className="size-1.5 rounded-full bg-brand animate-pulse" />
+                            The Smartest Way to Save on Medicines
+                        </span>
                         <span className="dark:border-background block h-4 w-0.5 border-l bg-white dark:bg-zinc-700"></span>
 
                         <div className="bg-background group-hover:bg-muted size-6 overflow-hidden rounded-full duration-500">
@@ -50,11 +53,12 @@ export const HeroContent = () => {
                     </Link>
 
                     <h1
-                        className="mt-8 max-w-4xl mx-auto text-balance text-6xl md:text-7xl lg:mt-16 xl:text-[5.25rem]">
-                        Get Your Medicines at Lowest Prices
+                        className="mt-8 max-w-4xl mx-auto text-balance text-6xl md:text-7xl lg:mt-16 xl:text-[5.25rem] font-title font-black tracking-tighter leading-[0.95] text-zinc-900">
+                        Get Your Medicines at <br />
+                        <span className="text-brand">Lowest Prices</span>
                     </h1>
                     <p
-                        className="mx-auto mt-8 max-w-2xl text-balance text-lg">
+                        className="mx-auto mt-8 max-w-2xl text-balance text-lg font-sans text-zinc-500 font-medium">
                         Upload your prescription and let local pharmacies bid on your order. Choose the best offer and get it delivered to your door in minutes.
                     </p>
                 </AnimatedGroup>

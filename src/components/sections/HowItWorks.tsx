@@ -1,79 +1,174 @@
 'use client'
 
-import { FileUp, Store, Gavel, Truck } from "lucide-react"
-import { motion } from "framer-motion"
+import React, { useRef } from 'react'
+import { motion, useScroll, useTransform, useInView, AnimatePresence } from "framer-motion"
+import { UploadVisual } from './how-it-works/UploadVisual'
+import { NetworkVisual } from './how-it-works/NetworkVisual'
+import { BiddingVisual } from './how-it-works/BiddingVisual'
+import { MapDeliveryVisual } from './how-it-works/MapDeliveryVisual'
 
 const steps = [
     {
-        icon: <FileUp className="size-6 text-zinc-900" />,
-        title: "Upload Prescription",
-        description: "Upload your prescription image. Our AI instantly digitizes it for pharmacies to read.",
+        id: "step-1",
+        title: "Digitizing Prescription",
+        description: "Your handwritten or digital prescription is processed by our AI. We extract medicine names, dosages, and quantities instantly.",
     },
     {
-        icon: <Store className="size-6 text-zinc-900" />,
-        title: "Pharmacies Connect",
-        description: "Verified local pharmacies receive your request and review the medicine availability.",
+        id: "step-2",
+        title: "Pharmacy Network",
+        description: "Verified local pharmacies receive a notification. They check their inventory and confirm availability within seconds.",
     },
     {
-        icon: <Gavel className="size-6 text-zinc-900" />,
-        title: "Smart Bidding",
-        description: "Pharmacies bid in real-time. You automatically get the lowest price offer.",
+        id: "step-3",
+        title: "Competitive Bidding",
+        description: "Pharmacies place bids to offer you the best price. Our algorithm automatically filters and shows the most value-for-money offers.",
     },
     {
-        icon: <Truck className="size-6 text-zinc-900" />,
-        title: "Fast Delivery",
-        description: "Accept the best offer and get your medicines delivered to your doorstep.",
+        id: "step-4",
+        title: "Smart Logistics",
+        description: "Once you accept, a nearby rider is assigned. They pick up the verified packet and deliver it to you using the fastest route.",
     }
 ]
 
-export default function HowItWorks() {
+const IllustrativeVisual = ({ activeStep }: { activeStep: number }) => {
     return (
-        <section className="py-24 bg-zinc-50/50">
-            <div className="mx-auto max-w-7xl px-6">
-                <div className="text-center mb-16 space-y-4">
-                    <h2 className="text-4xl font-bold tracking-tight text-zinc-900 sm:text-5xl">
-                        Prescription to Delivery
-                    </h2>
-                    <p className="text-lg text-zinc-500 max-w-2xl mx-auto">
-                        Our streamlined process makes managing medication simple, fast, and secure. Just a few clicks to better health.
+        <div className="w-full h-[400px] md:h-[500px] bg-white rounded-[2.5rem] border border-zinc-100 shadow-[0_0_50px_-12px_rgba(0,0,0,0.05)] overflow-hidden relative group">
+            {/* Background Accent */}
+            <div className="absolute inset-0 bg-linear-to-b from-zinc-50/50 to-transparent" />
+
+            <div className="relative h-full flex flex-col items-center justify-center p-8">
+                <AnimatePresence mode="wait">
+                    {activeStep === 0 && <UploadVisual />}
+                    {activeStep === 1 && <NetworkVisual />}
+                    {activeStep === 2 && <BiddingVisual />}
+                    {activeStep === 3 && <MapDeliveryVisual />}
+                </AnimatePresence>
+            </div>
+        </div >
+    )
+}
+
+
+const StepContent = ({
+    step,
+    index,
+    setActiveStep
+}: {
+    step: typeof steps[0],
+    index: number,
+    setActiveStep: (i: number) => void
+}) => {
+    const ref = useRef(null)
+    const isInView = useInView(ref, {
+        margin: "-40% 0px -40% 0px",
+    })
+
+    React.useEffect(() => {
+        if (isInView) {
+            setActiveStep(index)
+        }
+    }, [isInView, index, setActiveStep])
+
+    return (
+        <section
+            ref={ref}
+            className="md:h-[60vh] flex items-center py-20 md:py-0"
+        >
+            <motion.div
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ margin: "-20% 0px -20% 0px" }}
+                className="space-y-8"
+            >
+                <div className="space-y-4">
+                    <div className="flex items-center gap-4">
+                        <h3 className="text-3xl font-bold text-zinc-900 tracking-tight leading-none font-title">
+                            {step.title}
+                        </h3>
+                    </div>
+                    <p className="text-lg text-zinc-500 leading-relaxed max-w-md font-medium font-sans">
+                        {step.description}
                     </p>
                 </div>
+            </motion.div>
+        </section>
+    )
+}
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                    {steps.map((step, index) => (
-                        <motion.div
-                            key={index}
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.5, delay: index * 0.1 }}
-                            className="bg-white rounded-3xl p-8 border border-zinc-100"
-                        >
-                            <div className="flex flex-col items-center text-center space-y-6">
-                                {/* Circular Icon Background */}
-                                <div className="relative">
-                                    <div className="absolute inset-0 rounded-full bg-zinc-100/50 blur-xl" />
-                                    <div className="relative size-16 rounded-full bg-zinc-50 border border-zinc-100 flex items-center justify-center">
-                                        {step.icon}
-                                    </div>
+const IntroContent = ({ setActiveStep }: { setActiveStep: (i: number) => void }) => {
+    const ref = useRef(null)
+    const isInView = useInView(ref, {
+        margin: "-40% 0px -40% 0px",
+    })
 
-                                    {/* Static Orbital Ring Decoration */}
-                                    <svg className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -z-10 size-32 opacity-40" viewBox="0 0 100 100">
-                                        <circle cx="50" cy="50" r="40" fill="none" stroke="currentColor" strokeWidth="1" className="text-zinc-200 dashed-circle" />
-                                    </svg>
-                                </div>
+    React.useEffect(() => {
+        if (isInView) {
+            setActiveStep(0)
+        }
+    }, [isInView, setActiveStep])
 
-                                <div className="space-y-3">
-                                    <h3 className="text-xl font-bold text-zinc-900">
-                                        {step.title}
-                                    </h3>
-                                    <p className="text-zinc-500 leading-relaxed text-sm">
-                                        {step.description}
-                                    </p>
-                                </div>
-                            </div>
-                        </motion.div>
-                    ))}
+    return (
+        <div ref={ref} className="md:min-h-[50vh] flex items-center py-20 md:py-0">
+            <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="space-y-8"
+            >
+                <div className="space-y-4">
+                    <div className="flex items-center gap-4">
+                        <h3 className="text-3xl font-bold text-zinc-900 tracking-tight leading-none font-title">
+                            {steps[0].title}
+                        </h3>
+                    </div>
+                    <p className="text-lg text-zinc-500 leading-relaxed max-w-md font-medium font-sans">
+                        {steps[0].description}
+                    </p>
+                </div>
+            </motion.div>
+        </div>
+    )
+}
+
+export default function HowItWorks() {
+    const containerRef = useRef<HTMLDivElement>(null)
+    const [activeStep, setActiveStep] = React.useState(0)
+
+    return (
+        <section id="how-it-works" className="relative z-20 pt-32 md:pt-48 bg-white" ref={containerRef}>
+            <div className="mx-auto max-w-7xl px-6">
+                <div className="mb-24 md:mb-32">
+                    <h2 className="text-4xl md:text-5xl lg:text-8xl font-black tracking-tighter leading-[0.8] text-zinc-900 font-title">
+                        Simplified <br />
+                        <span className="text-brand font-normal">Healthcare.</span>
+                    </h2>
+                </div>
+
+                <div className="flex flex-col md:flex-row gap-16 md:gap-32 relative">
+                    {/* Left Side: Sticky Visuals */}
+                    <div className="w-full md:w-1/2 md:h-screen sticky top-24 md:top-0 flex items-center py-12 md:py-0">
+                        <div className="w-full">
+                            <IllustrativeVisual activeStep={activeStep} />
+                        </div>
+                    </div>
+
+                    {/* Right Side: Scrollable Information */}
+                    <div className="w-full md:w-1/2 space-y-[20vh] md:space-y-0">
+                        {/* Static Intro / Step 1 - Out of scroll range triggers */}
+                        <IntroContent setActiveStep={setActiveStep} />
+
+                        {/* Remaining Steps that trigger sticky changes */}
+                        {steps.slice(1).map((step, index) => (
+                            <StepContent
+                                key={step.id}
+                                step={step}
+                                index={index + 1}
+                                setActiveStep={setActiveStep}
+                            />
+                        ))}
+                        {/* Buffer spacing for final step to stay active */}
+                        <div className="h-[10vh] md:h-[20vh]" />
+                    </div>
                 </div>
             </div>
         </section>
