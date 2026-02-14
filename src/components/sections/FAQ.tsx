@@ -72,7 +72,7 @@ export const FAQ = () => {
                     </p>
                 </div>
 
-                <div className="bg-brand-light/20 backdrop-blur-sm rounded-[2.5rem] p-10 border border-brand/10">
+                <div className="bg-brand-light/20 backdrop-blur-sm rounded-[2.5rem] p-6 sm:p-10 border border-brand/10">
                     {faqs.map((faq, index) => (
                         <FAQItem key={index} {...faq} />
                     ))}

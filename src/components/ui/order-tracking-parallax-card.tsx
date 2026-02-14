@@ -1,6 +1,7 @@
 "use client";
 
-import * as React from "react";
+import React from "react";
+import Image from "next/image";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { cn } from "@/lib/utils";
 
@@ -81,10 +82,12 @@ export const OrderTrackingParallaxCard = React.forwardRef<
             style={{ transform: "translateZ(60px)", translateY: translateZImg }}
             className="relative flex justify-center"
           >
-            <img
+            <Image
               src={imageUrl}
               alt="Delivery truck"
-              className="pointer-events-none h-28 object-contain"
+              width={200}
+              height={112}
+              className="pointer-events-none h-28 w-auto object-contain"
             />
           </motion.div>
 

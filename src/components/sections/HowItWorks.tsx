@@ -32,7 +32,7 @@ const steps = [
 
 const IllustrativeVisual = ({ activeStep }: { activeStep: number }) => {
     return (
-        <div className="w-full h-[400px] md:h-[500px] bg-white rounded-[2.5rem] border border-zinc-100 shadow-[0_0_50px_-12px_rgba(0,0,0,0.05)] overflow-hidden relative group">
+        <div className="w-full h-[300px] sm:h-[400px] md:h-[500px] bg-white rounded-[2.5rem] border border-zinc-100 shadow-[0_0_50px_-12px_rgba(0,0,0,0.05)] overflow-hidden relative group">
             {/* Background Accent */}
             <div className="absolute inset-0 bg-linear-to-b from-zinc-50/50 to-transparent" />
 
@@ -146,7 +146,7 @@ export default function HowItWorks() {
 
                 <div className="flex flex-col md:flex-row gap-16 md:gap-32 relative">
                     {/* Left Side: Sticky Visuals */}
-                    <div className="w-full md:w-1/2 md:h-screen sticky top-24 md:top-0 flex items-center py-12 md:py-0">
+                    <div className="w-full md:w-1/2 md:h-screen sticky top-16 md:top-0 flex items-center py-6 md:py-0 z-30 bg-white md:bg-transparent">
                         <div className="w-full">
                             <IllustrativeVisual activeStep={activeStep} />
                         </div>

@@ -53,12 +53,12 @@ export const HeroContent = () => {
                     </Link>
 
                     <h1
-                        className="mt-8 max-w-4xl mx-auto text-balance text-6xl md:text-7xl lg:mt-16 xl:text-[5.25rem] font-title font-black tracking-tighter leading-[0.95] text-zinc-900">
+                        className="mt-8 max-w-4xl mx-auto text-balance text-4xl sm:text-6xl md:text-7xl lg:mt-16 xl:text-[5.25rem] font-title font-black tracking-tighter leading-[0.95] text-zinc-900">
                         Get Your Medicines at <br />
                         <span className="text-brand">Lowest Prices</span>
                     </h1>
                     <p
-                        className="mx-auto mt-8 max-w-2xl text-balance text-lg font-sans text-zinc-500 font-medium">
+                        className="mx-auto mt-6 md:mt-8 max-w-2xl text-balance text-base md:text-lg font-sans text-zinc-500 font-medium px-4 sm:px-0">
                         Upload your prescription and let local pharmacies bid on your order. Choose the best offer and get it delivered to your door in minutes.
                     </p>
                 </AnimatedGroup>

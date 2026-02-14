@@ -1,5 +1,4 @@
-"use client" 
-
+import Image from "next/image"
 import * as React from "react"
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -46,7 +45,7 @@ const AvatarGroup = ({
               onMouseEnter={() => setHoveredIdx(idx)}
               onMouseLeave={() => setHoveredIdx(null)}
             >
-              <img
+              <Image
                 src={avatar.src}
                 alt={avatar.alt || `Avatar ${idx + 1}`}
                 width={size}
@@ -65,7 +64,7 @@ const AvatarGroup = ({
                       scale: 0.7,
                     }}
                     animate={{
-                      x: "-50%", 
+                      x: "-50%",
                       y: 0,
                       opacity: 1,
                       scale: 1,

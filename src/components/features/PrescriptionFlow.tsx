@@ -3,7 +3,6 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import { Upload, FileText } from 'lucide-react'
-import { cn } from '@/lib/utils'
 
 interface UploadScreenProps {
     onUpload?: () => void
@@ -49,12 +48,8 @@ function UploadScreen({ onUpload }: UploadScreenProps) {
 
 export function PrescriptionFlow() {
     return (
-        <div className={cn(
-            "relative w-full mx-auto transition-all duration-500 ease-in-out max-w-md"
-        )}>
-            <div className={cn(
-                "bg-white border border-zinc-200 rounded-[2rem] shadow-xl overflow-hidden flex flex-col p-6 transition-all duration-500 min-h-[400px]"
-            )}>
+        <div className="relative w-full mx-auto transition-all duration-500 ease-in-out max-w-md">
+            <div className="bg-white border border-zinc-200 rounded-[2rem] shadow-xl overflow-hidden flex flex-col p-6 transition-all duration-500 min-h-[400px]">
                 <div className="flex-1 flex flex-col relative">
                     <UploadScreen />
                 </div>

@@ -20,9 +20,9 @@ export function Features() {
                     </p>
                 </div>
 
-                <div className="mx-auto grid gap-2 sm:grid-cols-5">
+                <div className="mx-auto grid gap-4 lg:grid-cols-5 md:grid-cols-2">
                     {/* Best Price Guarantee */}
-                    <Card className="group overflow-hidden shadow-[0_0_50px_-12px_rgba(0,0,0,0.05)] sm:col-span-3 sm:rounded-none sm:rounded-tl-[2.5rem] border-zinc-200/50">
+                    <Card className="group overflow-hidden shadow-[0_0_50px_-12px_rgba(0,0,0,0.05)] lg:col-span-3 md:col-span-2 sm:rounded-none lg:rounded-tl-[2.5rem] border-zinc-200/50">
                         <CardHeader className="p-8 md:p-10">
                             <div className="flex items-center gap-2 mb-2">
                                 <BadgeCheck className="size-5 text-brand" />
@@ -113,7 +113,7 @@ export function Features() {
                     </Card>
 
                     {/* Fast Doorstep Delivery */}
-                    <Card id="track" className="group overflow-hidden shadow-[0_0_50px_-12px_rgba(0,0,0,0.05)] sm:col-span-2 sm:rounded-none sm:rounded-tr-[2.5rem] border-zinc-200/50 flex flex-col">
+                    <Card id="track" className="group overflow-hidden shadow-[0_0_50px_-12px_rgba(0,0,0,0.05)] lg:col-span-2 md:col-span-1 sm:rounded-none lg:rounded-tr-[2.5rem] border-zinc-200/50 flex flex-col">
                         <div className="p-8 md:p-10">
                             <div className="flex items-center gap-2 mb-4">
                                 <Zap className="size-5 text-brand" />
@@ -136,7 +136,7 @@ export function Features() {
                     </Card>
 
                     {/* Patient First Care */}
-                    <Card className="group p-8 shadow-[0_0_50px_-12px_rgba(0,0,0,0.05)] sm:col-span-2 sm:rounded-none sm:rounded-bl-[2.5rem] md:p-10 border-zinc-200/50 flex flex-col justify-center bg-white overflow-hidden">
+                    <Card className="group p-8 shadow-[0_0_50px_-12px_rgba(0,0,0,0.05)] lg:col-span-2 md:col-span-1 sm:rounded-none lg:rounded-bl-[2.5rem] md:p-10 border-zinc-200/50 flex flex-col justify-center bg-white overflow-hidden">
                         <div className="flex items-center justify-center gap-2 mb-4">
                             <Heart className="size-5 text-brand" />
                             <p className="text-center text-2xl font-black text-zinc-900 font-title tracking-tight">Patient First</p>
@@ -172,7 +172,7 @@ export function Features() {
                     </Card>
 
                     {/* Verified Pharmacy Network */}
-                    <Card id="pharmacies" className="group relative shadow-[0_0_50px_-12px_rgba(0,0,0,0.05)] sm:col-span-3 sm:rounded-none sm:rounded-br-[2.5rem] border-zinc-200/50 bg-white">
+                    <Card id="pharmacies" className="group relative shadow-[0_0_50px_-12px_rgba(0,0,0,0.05)] lg:col-span-3 md:col-span-2 sm:rounded-none lg:rounded-br-[2.5rem] border-zinc-200/50 bg-white">
                         <CardHeader className="p-8 md:p-10 pb-0 md:pb-0">
                             <div className="flex items-center gap-2 mb-2">
                                 <ShieldCheck className="size-5 text-brand" />
